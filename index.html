@@ -11,23 +11,17 @@ App: <a href=https://github.com/pcn-club/pcn_kids_procon/>src on GitHub</a><br>
 
 <script type="module">
 import { CBOR } from "https://js.sabae.cc/CBOR.js";
-import { fetchBin } from "https://js.sabae.cc/fetchBin.js";
-import { Base64 } from "https://code4fukui.github.io/Base64/Base64.js";
+import { Bin } from "https://js.sabae.cc/Bin.js";
 import { shuffle } from "https://js.sabae.cc/shuffle.js";
 import { shuffleChildren } from "https://js.sabae.cc/shuffleChildren.js";
 
-const bin2src = (bin) => "data:image/*;base64," + Base64.encode(bin);
-
 onload = async () => {
-  const bin = await fetchBin("./procon2022/procon2022list.cbor");
+  const bin = await Bin.fetch("https://pcn-club.github.io/pcn_kids_procon/procon2022/procon2022list.cbor");
   const data = CBOR.decode(bin);
   shuffle(data);
   for (const d of data) {
     const div = document.createElement("div");
-    //const img = new Image();
-    //img.src = bin2src(d.data);
-    //div.appendChild(img);
-    div.style.backgroundImage = "url(" + bin2src(d.data) + ")";
+    div.style.backgroundImage = "url(" + Bin.toSrc(d.data) + ")";
     const title = document.createElement("div");
     title.textContent = d.id + ". " + d.title;
     div.appendChild(title);
@@ -35,6 +29,18 @@ onload = async () => {
   }
   btnshuffle.onclick = () => shuffleChildren(list);
 };
+
+/*
+onload = async () => {
+  const bin = await Bin.fetch("https://pcn-club.github.io/pcn_kids_procon/procon2022/procon2022list.cbor");
+  const data = CBOR.decode(bin);
+  for (const d of data) {
+    const img = new Image();
+    img.src = Bin.toSrc(d.data);
+    list.appendChild(img);
+  }
+};
+*/
 </script>
 
 <style>
