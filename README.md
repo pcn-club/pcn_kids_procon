@@ -1,15 +1,15 @@
 # pcn_kids_procon
- 
-- [PCNこどもプロコン作品一覧](https://pcn-club.github.io/pcn_kids_procon/)
 
-## opendata
+## オープンデータ / opendata
 
 - [CSV](https://pcn-club.github.io/pcn_kids_procon/procon2022/procon2022list.csv)
 - [JSON](https://pcn-club.github.io/pcn_kids_procon/procon2022/procon2022list.json)
 - [サムネイル](https://github.com/pcn-club/pcn_kids_procon/tree/main/procon2022/thumb)
 - [CBOR](https://pcn-club.github.io/pcn_kids_procon/procon2022/procon2022list.cbor) サムネイル画像付き
 
-## sample app
+## サンプルアプリ / sample app
+
+- [PCNこどもプロコン作品一覧](https://pcn-club.github.io/pcn_kids_procon/)
 
 ```js
 import { CBOR } from "https://js.sabae.cc/CBOR.js";
