@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title>PCNこどもプロコン作品一覧</title>
+<body>
+
+<h1>PCNこどもプロコン作品一覧 <button id=btnshuffle>シャッフル</button></h1>
+<div id=list></div>
+<hr>
+Data: <a href=https://procon.pcn.club/>PCNこどもプロコン</a> CC BY <a href=https://pcn.club>PCN</a><br>
+App: <a href=https://github.com/pcn-club/pcn_kids_procon/>src on GitHub</a><br>
+
+
+<script type="module">
+import { CBOR } from "https://js.sabae.cc/CBOR.js";
+import { fetchBin } from "https://js.sabae.cc/fetchBin.js";
+import { Base64 } from "https://code4fukui.github.io/Base64/Base64.js";
+import { shuffle } from "https://js.sabae.cc/shuffle.js";
+import { shuffleChildren } from "https://js.sabae.cc/shuffleChildren.js";
+
+const bin2src = (bin) => "data:image/*;base64," + Base64.encode(bin);
+
+onload = async () => {
+  const bin = await fetchBin("./procon2022/procon2022list.cbor");
+  const data = CBOR.decode(bin);
+  shuffle(data);
+  for (const d of data) {
+    const div = document.createElement("div");
+    //const img = new Image();
+    //img.src = bin2src(d.data);
+    //div.appendChild(img);
+    div.style.backgroundImage = "url(" + bin2src(d.data) + ")";
+    const title = document.createElement("div");
+    title.textContent = d.id + ". " + d.title;
+    div.appendChild(title);
+    list.appendChild(div);
+  }
+  btnshuffle.onclick = () => shuffleChildren(list);
+};
+</script>
+
+<style>
+#list {
+  flex-flow: row wrap;
+}
+#list > div {
+  display: inline-block;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain; /* cover */
+  width: 300px;
+  height: 240px;
+  margin: 10px;
+  vertical-align: middle;
+}
+#list > div > div {
+  display: inline-block;
+  padding: .2em;
+  background-color: rgba(255, 255, 255, .8);
+}
+#list img {
+  width: 100%;
+}
+</style>
