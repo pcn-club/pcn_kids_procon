@@ -16,7 +16,9 @@ import { shuffle } from "https://js.sabae.cc/shuffle.js";
 import { shuffleChildren } from "https://js.sabae.cc/shuffleChildren.js";
 
 onload = async () => {
-  const bin = await Bin.fetch("https://pcn-club.github.io/pcn_kids_procon/procon2022/procon2022list.cbor");
+  const url = "https://pcn-club.github.io/pcn_kids_procon/procon2022/procon2022list-min.cbor";
+  //const url = "./procon2022/procon2022list-min.cbor";
+  const bin = await Bin.fetch(url);
   const data = CBOR.decode(bin);
   shuffle(data);
   for (const d of data) {
