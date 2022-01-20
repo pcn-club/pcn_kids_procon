@@ -5,7 +5,7 @@
 - [CSV](https://pcn-club.github.io/pcn_kids_procon/procon2022/procon2022list.csv)
 - [JSON](https://pcn-club.github.io/pcn_kids_procon/procon2022/procon2022list.json)
 - [サムネイル](https://github.com/pcn-club/pcn_kids_procon/tree/main/procon2022/thumb)
-- [CBOR](https://pcn-club.github.io/pcn_kids_procon/procon2022/procon2022list.cbor) サムネイル画像付き
+- [CBOR](https://pcn-club.github.io/pcn_kids_procon/procon2022/procon2022list.cbor) (サムネイル画像付き、[CBOR生成コード](https://github.com/pcn-club/pcn_kids_procon/blob/main/makeCBOR-min.js))
 
 ## サンプルアプリ / sample app
 
